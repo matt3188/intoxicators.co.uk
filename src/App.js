@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import logo from "./logo.jpg";
 import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./Components/Home";
+import Calendar from "./Components/Calendar";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <section className="App-section">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p className="App-intro">Website coming soon</p>
-        </section>
-      </div>
+      <BrowserRouter>
+        <div className="app">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/calendar" component={Calendar} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

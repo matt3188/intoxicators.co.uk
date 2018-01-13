@@ -2,4 +2,21 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  color: #fff;
+  background-color: #1a1108;
+}
+.home {
+  color: white;
+  text-align: center;
+}
+
+.App-logo {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+.App-title {
+  font-size: 1.5em;
+}
+
 }

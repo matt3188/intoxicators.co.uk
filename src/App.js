@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.jpg";
-import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Components/Home";
 import Calendar from "./Components/Calendar";

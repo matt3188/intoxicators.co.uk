@@ -19,4 +19,16 @@ body {
   font-size: 1.5em;
 }
 
+.rbc-calendar {
+  color: #000;
+  min-height: 580px;
+  max-width: 1200px;
+  margin: 10px auto 0;
+}
+.rbc-month-view,
+.rbc-toolbar {
+  background-color: #fff;
+}
+.rbc-toolbar {
+  padding: 10px;
 }

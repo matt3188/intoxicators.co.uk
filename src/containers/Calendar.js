@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import BigCalendar from "react-big-calendar";
-import { getEvents } from "../Services/gcal";
+import { getEvents } from "services/gcal";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 // a localizer for BigCalendar

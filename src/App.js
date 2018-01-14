@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from "./Components/Home";
-import Calendar from "./Components/Calendar";
+import Home from "containers/Home";
+import Calendar from "containers/Calendar";
 
 class App extends Component {
   render() {

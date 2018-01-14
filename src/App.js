@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "containers/Home";
 import Calendar from "containers/Calendar";
 import Header from "components/Header";
+import Footer from "components/Footer";
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/calendar" component={Calendar} />
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     );

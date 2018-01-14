@@ -18,8 +18,9 @@
 .slick-dots {
   bottom: -35px;
 }
-.slick-dots li button:before {
-  color: #fff !important;
+.slick-dots li button:before,
+.slick-dots li.slick-active button:before {
+  color: #fff;
 }
 .slick-prev,
 .slick-next {

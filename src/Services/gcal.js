@@ -9,7 +9,7 @@ export function getEvents(callback) {
     if (!err) {
       const events = [];
       JSON.parse(resp.text).items.map(event => {
-        events.push({
+        return events.push({
           start: event.start.date || event.start.dateTime,
           end: event.end.date || event.end.dateTime,
           title: event.summary

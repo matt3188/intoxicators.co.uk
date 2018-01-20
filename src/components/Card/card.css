@@ -11,10 +11,10 @@
   margin-right: 0;
 }
 .card div {
-  background-position: center;
-  background-size: cover;
   height: 200px;
+  background-size: cover;
+  background-position: center;
 }
 .card .heading {
-  margin: 10px;
+  margin: 10px 10px 0;
 }

@@ -8,9 +8,9 @@ const Home = () => {
     <div className="home">
       <section className="section">
         <Carousel />
-        <Card title="First Link" image="images/logo.jpg" linkTo="/calendar" />
-        <Card title="Second Link" image="images/slider-03.jpg" linkTo="/calendar" />
-        <Card title="Third Link" image="images/slider-04.jpg" linkTo="/calendar" />
+        <Card title="Upcoming events" image="images/logo.jpg" linkTo="/calendar" />
+        <Card title="Our cars" image="images/slider-03.jpg" linkTo="/calendar" />
+        <Card title="Join the club" image="images/slider-04.jpg" linkTo="/calendar" />
       </section>
     </div>
   );

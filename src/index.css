@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Pacifico");
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 
 body {
   margin: 0;
@@ -8,7 +8,7 @@ body {
   background-color: #201b0e;
 }
 .sub-heading {
-  font-family: "Pacifico", cursive;
+  font-family: 'Pacifico', cursive;
 }
 
 .text-logo {
@@ -20,5 +20,5 @@ a {
   text-decoration: none;
 }
 a:hover {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid;
 }

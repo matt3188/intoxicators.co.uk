@@ -6,7 +6,7 @@ import Slider from "react-slick";
 
 class slickCarousel extends Component {
   render() {
-    var objects = [
+    const objects = [
       {
         image: "images/slider-01.jpg",
         title: "title 01"
@@ -33,7 +33,7 @@ class slickCarousel extends Component {
       }
     ];
 
-    var settings = {
+    const settings = {
       dots: true,
       autoplay: true,
       infinite: true,
@@ -51,7 +51,7 @@ class slickCarousel extends Component {
             <li
               key={item.title}
               className="slide"
-              style={{ backgroundImage: "url(" + item.image + ")" }}
+              style={{ backgroundImage: `url(${  item.image  })` }}
               alt={item.title}
             />
           ))}

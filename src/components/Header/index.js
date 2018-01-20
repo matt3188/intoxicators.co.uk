@@ -4,16 +4,14 @@ import Navigation from "components/Navigation";
 import logo from "images/text-logo.png";
 import "./header.css";
 
-const Header = () => {
-  return (
-    <div className="header">
-      <Link to="/">
-        <img src={logo} className="text-logo" alt="logo" />
-      </Link>
+const Header = () => (
+  <div className="header">
+    <Link to="/">
+      <img src={logo} className="text-logo" alt="logo" />
+    </Link>
 
-      <Navigation />
-    </div>
+    <Navigation />
+  </div>
   );
-};
 
 export default Header;

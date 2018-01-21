@@ -13,7 +13,9 @@
     "react-scripts": "1.0.17",
     "react-slick": "^0.16.0",
     "slick-carousel": "^1.8.1",
-    "superagent": "^3.8.2"
+    "superagent": "^3.8.2",
+    "containers": "./src/containers",
+    "components": "./src/components"
   },
   "scripts": {
     "predeploy": "npm run build",

@@ -1,13 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-
+// Containers
 import HomePage from 'containers/HomePage';
 import CalendarPage from 'containers/CalendarPage';
 
-const App = () => (
+// Components
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+
+const AppWrapper = () => (
   <BrowserRouter>
     <div className="app">
       <Header />
@@ -20,4 +22,4 @@ const App = () => (
   </BrowserRouter>
 );
 
-export default App;
+export default AppWrapper;

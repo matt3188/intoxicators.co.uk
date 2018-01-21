@@ -12,6 +12,6 @@ const Home = () => (
       <Card title="Join the club" image="images/slider-04.jpg" linkTo="/calendar" />
     </section>
   </div>
-  );
+);
 
 export default Home;

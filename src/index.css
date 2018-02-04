@@ -22,3 +22,12 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.btn {
+  background-color: #b2984d;
+  border-color: #b2984d;
+}
+.btn:hover {
+  background-color: #997f34;
+  border-color: #997f34;
+}

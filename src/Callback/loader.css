@@ -1,6 +1,16 @@
-.loading-container {
+.loader-container {
   position: relative;
   min-height: 500px;
+}
+.loader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 220px;
+  height: 220px;
 }
 .head {
   position: absolute;
@@ -12,14 +22,8 @@
   height: calc(336px/2);
 }
 .spinner {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: 250px;
-  height: 250px;
+  width: 220px;
+  height: 220px;
   border: 8px solid #b2984d;
   border-right-color: transparent;
   border-left-color: transparent;

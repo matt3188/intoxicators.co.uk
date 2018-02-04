@@ -2,8 +2,7 @@
   position: relative;
   min-height: 500px;
 }
-.loading {
-  animation: spin 2s infinite linear;
+.head {
   position: absolute;
   left: 0;
   right: 0;
@@ -11,6 +10,21 @@
   bottom: 0;
   margin: auto;
   height: calc(336px/2);
+}
+.spinner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 250px;
+  height: 250px;
+  border: 8px solid #b2984d;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-radius: 100%;
+  animation: spin 2s infinite linear;
 }
 
 @-webkit-keyframes spin {

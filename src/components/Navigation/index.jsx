@@ -5,9 +5,7 @@ import './navigation.css';
 const Navigation = () => (
   <ul className="navigation">
     <li>
-      <NavLink exact to="/">
-        Home
-      </NavLink>
+      <NavLink to="/home">Home</NavLink>
     </li>
     <li>
       <NavLink to="/members">Our Members</NavLink>

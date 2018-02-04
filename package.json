@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://intoxicators.co.uk",
   "dependencies": {
+    "auth0-js": "^9.2.0",
     "components": "./src/components",
     "containers": "./src/containers",
     "gh-pages": "^1.1.0",

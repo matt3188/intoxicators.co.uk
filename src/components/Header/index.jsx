@@ -1,19 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Navigation from 'components/Navigation';
 import logo from 'images/text-logo.png';
 
+import { Button } from 'react-bootstrap';
 import './header.css';
 
-const Header = () => (
-  <div className="header">
-    <Link to="/">
-      <img src={logo} className="text-logo" alt="Intoxicators logo" />
-    </Link>
+class Header extends Component {
+  goTo(route) {
+    this.props.history.replace(`/${route}`);
+  }
 
-    <Navigation />
-  </div>
-);
+  login() {
+    console.log(this.props.auth);
+    this.props.auth.login();
+  }
 
+  logout() {
+    this.props.auth.logout();
+  }
+
+  renewToken() {
+    this.props.auth.renewToken();
+  }
+
+  render() {
+    const { isAuthenticated } = this.props.auth;
+
+    return (
+      <div className="header">
+        <Link to="/home">
+          <img src={logo} className="text-logo" alt="Intoxicators logo" />
+        </Link>
+        <div className="login">
+          {!isAuthenticated() && (
+            <Button bsStyle="primary" className="btn-margin" onClick={this.login.bind(this)}>
+              Log In
+            </Button>
+          )}
+          {isAuthenticated() && (
+            <Button bsStyle="primary" className="btn-margin" onClick={this.logout.bind(this)}>
+              Log Out
+            </Button>
+          )}
+        </div>
+        <Navigation />
+      </div>
+    );
+  }
+}
 export default Header;

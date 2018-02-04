@@ -1,7 +1,8 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Router, Route, Switch } from 'react-router-dom';
 
 // Containers
+import App from 'containers/App';
 import HomePage from 'containers/HomePage';
 import CalendarPage from 'containers/CalendarPage';
 import MembersPage from 'containers/MembersPage';
@@ -10,18 +11,42 @@ import MembersPage from 'containers/MembersPage';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-const AppWrapper = () => (
-  <BrowserRouter>
-    <div className="app">
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/calendar" component={CalendarPage} />
-        <Route path="/members" component={MembersPage} />
-      </Switch>
-      <Footer />
-    </div>
-  </BrowserRouter>
-);
+import Callback from 'Callback/Callback';
+import Auth from 'Auth/Auth';
+import history from '../../history';
+
+const auth = new Auth();
+
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+};
+
+class AppWrapper extends Component {
+  render() {
+    return (
+      <Router history={history} component={App}>
+        <div className="app">
+          <Header history={history} auth={auth} />
+          <Switch>
+            <Route exact path="/" render={props => <App auth={auth} {...props} />} />
+            <Route path="/home" render={props => <HomePage auth={auth} {...props} />} />
+            <Route path="/calendar" render={props => <CalendarPage auth={auth} {...props} />} />
+            <Route path="/members" render={props => <MembersPage auth={auth} {...props} />} />
+            <Route
+              path="/callback"
+              render={props => {
+                handleAuthentication(props);
+                return <Callback {...props} />;
+              }}
+            />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    );
+  }
+}
 
 export default AppWrapper;

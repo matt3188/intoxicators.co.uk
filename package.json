@@ -5,10 +5,10 @@
   "homepage": "http://intoxicators.co.uk",
   "dependencies": {
     "auth0-js": "^9.2.0",
-    "components": "./src/components",
-    "containers": "./src/containers",
+    "eslint-plugin-prettier": "^2.6.0",
     "gh-pages": "^1.1.0",
     "moment": "^2.20.1",
+    "prettier": "^1.10.2",
     "react": "^16.2.0",
     "react-big-calendar": "^0.17.0",
     "react-bootstrap": "^0.32.0",
@@ -25,16 +25,17 @@
     "start": "NODE_PATH=src react-scripts start",
     "build": "NODE_PATH=src react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
-    "eslint": "^4.16.0",
+    "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.5.1"
+    "eslint-plugin-react": "^7.6.1"
   }
 }

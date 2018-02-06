@@ -1,7 +1,5 @@
-const AUTH_CONFIG = {
-  domain: 'DOMAIN',
-  clientId: 'CLIENT_ID',
-  callbackUrl: 'CALLBACK_URL',
+export default {
+  AUTH0_CLIENT_ID: 'client id',
+  AUTH0_DOMAIN: 'domain',
+  REDIRECT_URL: 'redirect url',
 };
-
-export default AUTH_CONFIG;

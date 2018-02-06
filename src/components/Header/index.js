@@ -17,9 +17,10 @@ class Header extends Component {
     this.props.auth.login();
   }
 
-  logout() {
+  handleLogoutClick = () => {
     this.props.auth.logout();
-  }
+    this.props.history.push({ pathname: '/home' });
+  };
 
   renewToken() {
     this.props.auth.renewToken();
@@ -40,7 +41,7 @@ class Header extends Component {
             </Button>
           )}
           {isAuthenticated() && (
-            <Button bsStyle="primary" className="btn-margin" onClick={this.logout.bind(this)}>
+            <Button bsStyle="primary" className="btn-margin" onClick={this.handleLogoutClick}>
               Log Out
             </Button>
           )}

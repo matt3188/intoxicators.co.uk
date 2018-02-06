@@ -12,7 +12,7 @@ class Calendar extends Component {
   constructor() {
     super();
     this.state = {
-      events: []
+      events: [],
     };
   }
   componentDidMount() {

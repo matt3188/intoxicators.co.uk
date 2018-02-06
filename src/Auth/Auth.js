@@ -1,16 +1,18 @@
 import auth0 from 'auth0-js';
-import { AUTH_CONFIG } from './auth0-variables';
 import history from '../history';
 
 class Auth {
-  auth0 = new auth0.WebAuth({
-    domain: AUTH_CONFIG.domain,
-    clientID: AUTH_CONFIG.clientId,
-    redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-    responseType: 'token id_token',
-    scope: 'openid',
-  });
+export default class AuthService {
+  constructor() {
+    this.auth0 = new auth0.WebAuth({
+      domain: config.AUTH0_DOMAIN,
+      clientID: config.AUTH0_CLIENT_ID,
+      redirectUri: config.REDIRECT_URL,
+      audience: `https://${config.AUTH0_DOMAIN}/userinfo`,
+      responseType: 'token id_token',
+      scope: 'openid',
+    });
+
 
   login() {
     this.auth0.authorize();

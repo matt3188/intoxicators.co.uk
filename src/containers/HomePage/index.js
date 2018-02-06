@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Carousel from 'components/Carousel';
-import Card from 'components/Card';
-import './home.css';
-
 import { Grid, Row, Col } from 'react-bootstrap';
+
+import Carousel from 'components/Carousel/';
+import Card from 'components/Card/';
+import './home.css';
 
 class Home extends Component {
   render() {

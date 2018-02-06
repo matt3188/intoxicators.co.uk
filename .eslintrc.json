@@ -7,10 +7,10 @@
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "prettier/prettier": ["error"],
     "import/no-extraneous-dependencies": [
-      "error",
+      1,
       { "devDependencies": false, "optionalDependencies": false, "peerDependencies": false }
-    ],
-    "prettier/prettier": ["error"]
+    ]
   }
 }

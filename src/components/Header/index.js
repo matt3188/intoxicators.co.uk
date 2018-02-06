@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Navigation from 'components/Navigation';
-import logo from 'images/text-logo.png';
+import logo from 'images/text-logo';
 
 import { Button } from 'react-bootstrap';
 import './header.css';
@@ -13,14 +13,13 @@ class Header extends Component {
   }
 
   login() {
-    console.log(this.props.auth);
     this.props.auth.login();
   }
 
-  handleLogoutClick = () => {
+  logout() {
     this.props.auth.logout();
     this.props.history.push({ pathname: '/' });
-  };
+  }
 
   renewToken() {
     this.props.auth.renewToken();
@@ -41,7 +40,7 @@ class Header extends Component {
             </Button>
           )}
           {isAuthenticated() && (
-            <Button bsStyle="primary" className="btn-margin" onClick={this.handleLogoutClick}>
+            <Button bsStyle="primary" className="btn-margin" onClick={this.logout.bind(this)}>
               Log Out
             </Button>
           )}

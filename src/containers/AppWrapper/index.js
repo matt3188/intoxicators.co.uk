@@ -6,12 +6,12 @@ import App from 'containers/App';
 import HomePage from 'containers/HomePage';
 import CalendarPage from 'containers/CalendarPage';
 import MembersPage from 'containers/MembersPage';
+import Callback from 'containers/Callback';
 
 // Components
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-import Callback from 'Callback';
 import AuthService from 'Auth/Auth';
 import history from '../../history';
 

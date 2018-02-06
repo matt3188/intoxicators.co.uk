@@ -1,7 +1,8 @@
 import auth0 from 'auth0-js';
+
+import config from './auth0-variables';
 import history from '../history';
 
-class Auth {
 export default class AuthService {
   constructor() {
     this.auth0 = new auth0.WebAuth({
@@ -13,22 +14,23 @@ export default class AuthService {
       scope: 'openid',
     });
 
+    this.login = this.login.bind(this);
+    this.handleAuthentication = this.handleAuthentication.bind(this);
+    // this.isAuthenticated = this.isAuthenticated.bind(this);
+  }
 
   login() {
     this.auth0.authorize();
   }
 
-  constructor() {
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
-    this.handleAuthentication = this.handleAuthentication.bind(this);
-    this.isAuthenticated = this.isAuthenticated.bind(this);
+  isAuthenticated() {
+    return AuthService.getToken();
   }
 
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult);
+        AuthService.setToken(authResult);
         history.replace('/home');
       } else if (err) {
         history.replace('/home');
@@ -37,14 +39,10 @@ export default class AuthService {
     });
   }
 
-  setSession(authResult) {
-    // Set the time that the access token will expire at
-    let expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
-    // navigate to the home route
-    history.replace('/home');
+  static loggedIn() {
+    // Checks if there is a saved token and it's still valid
+    const token = AuthService.getToken();
+    return !!token && !AuthService.isTokenExpired(token);
   }
 
   logout() {
@@ -56,12 +54,13 @@ export default class AuthService {
     history.replace('/home');
   }
 
-  isAuthenticated() {
-    // Check whether the current time is past the
-    // access token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+  static setToken(idToken) {
+    // Saves user token to window.localStorage
+    window.localStorage.setItem('id_token', idToken);
+  }
+
+  static getToken() {
+    // Retrieves the user token from window.localStorage
+    return window.localStorage.getItem('id_token');
   }
 }
-
-export default Auth;

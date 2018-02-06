@@ -3,14 +3,18 @@
   "plugins": ["prettier"],
   "env": {
     "browser": true,
+    "es6": true,
+    "node": true,
     "jasmine": true
   },
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
-    "prettier/prettier": ["error"],
     "import/no-extraneous-dependencies": [
-      1,
       { "devDependencies": false, "optionalDependencies": false, "peerDependencies": false }
-    ]
+    ],
+    "no-console": 0,
+    "import/no-unresolved": 0,
+    "import/extensions": [2, "never", { "js": "never", "jsx": "never", "json": "never" }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "prettier/prettier": ["error"]
   }
 }

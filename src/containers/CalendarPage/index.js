@@ -1,8 +1,8 @@
 import React from 'react';
-import './calendar.css';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import Calendar from 'components/Calendar';
-import { Grid, Row, Col } from 'react-bootstrap';
+import './calendar.css';
 
 const CalendarPage = () => {
   return (

@@ -2,7 +2,6 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 
 // Containers
-import App from 'containers/App';
 import HomePage from 'containers/HomePage';
 import CalendarPage from 'containers/CalendarPage';
 import MembersPage from 'containers/MembersPage';
@@ -12,7 +11,7 @@ import Callback from 'containers/Callback';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-import AuthService from 'Auth/Auth';
+import AuthService from 'utils/Auth';
 import history from '../../history';
 
 const auth = new AuthService();
@@ -24,7 +23,7 @@ const handleAuthentication = nextState => {
 };
 
 const AppWrapper = () => (
-  <Router history={history} component={App}>
+  <Router history={history}>
     <div className="app">
       <Header history={history} auth={auth} />
       <Switch>

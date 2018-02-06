@@ -50,8 +50,21 @@ export default class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('profile');
     // navigate to the home route
     history.replace('/');
+  }
+
+  static getProfile() {
+    // Retrieves the profile data from window.localStorage
+    const profile = window.localStorage.getItem('profile');
+    return profile ? JSON.parse(window.localStorage.profile) : {};
+  }
+
+  static setProfile(profile) {
+    // Saves profile data to window.localStorage
+    window.localStorage.setItem('profile', JSON.stringify(profile));
+    // Triggers profile_updated event to update the UI
   }
 
   static setToken(idToken) {

@@ -19,7 +19,7 @@ class Header extends Component {
 
   handleLogoutClick = () => {
     this.props.auth.logout();
-    this.props.history.push({ pathname: '/home' });
+    this.props.history.push({ pathname: '/' });
   };
 
   renewToken() {
@@ -31,7 +31,7 @@ class Header extends Component {
 
     return (
       <div className="header">
-        <Link to="/home">
+        <Link to="/">
           <img src={logo} className="text-logo" alt="Intoxicators logo" />
         </Link>
         <div className="login">

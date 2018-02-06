@@ -31,9 +31,9 @@ export default class AuthService {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         AuthService.setToken(authResult);
-        history.replace('/home');
+        history.replace('/');
       } else if (err) {
-        history.replace('/home');
+        history.replace('/');
         console.log(err);
       }
     });
@@ -51,7 +51,7 @@ export default class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/');
   }
 
   static setToken(idToken) {

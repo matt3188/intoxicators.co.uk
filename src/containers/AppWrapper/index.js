@@ -11,7 +11,7 @@ import MembersPage from 'containers/MembersPage';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-import Callback from 'Callback/Callback';
+import Callback from 'Callback';
 import AuthService from 'Auth/Auth';
 import history from '../../history';
 
@@ -28,8 +28,7 @@ const AppWrapper = () => (
     <div className="app">
       <Header history={history} auth={auth} />
       <Switch>
-        <Route exact path="/" render={props => <App auth={auth} {...props} />} />
-        <Route path="/home" render={props => <HomePage auth={auth} {...props} />} />
+        <Route exact path="/" render={props => <HomePage auth={auth} {...props} />} />
         <Route path="/calendar" render={props => <CalendarPage auth={auth} {...props} />} />
         <Route path="/members" render={props => <MembersPage auth={auth} {...props} />} />
         <Route

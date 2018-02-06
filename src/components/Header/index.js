@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 import Navigation from 'components/Navigation';
-import logo from 'images/text-logo';
+import logo from 'images/text-logo.png';
 
-import { Button } from 'react-bootstrap';
 import './header.css';
 
 class Header extends Component {

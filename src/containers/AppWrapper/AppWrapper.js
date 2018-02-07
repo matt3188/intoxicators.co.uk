@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 // Containers
 import HomePage from 'containers/HomePage/HomePage';
@@ -23,24 +23,22 @@ const handleAuthentication = nextState => {
 };
 
 const AppWrapper = () => (
-  <Router history={history}>
-    <div className="app">
-      <Header history={history} auth={auth} />
-      <Switch>
-        <Route exact path="/" render={props => <HomePage auth={auth} {...props} />} />
-        <Route path="/calendar" render={props => <CalendarPage auth={auth} {...props} />} />
-        <Route path="/members" render={props => <MembersPage auth={auth} {...props} />} />
-        <Route
-          path="/callback"
-          render={props => {
-            handleAuthentication(props);
-            return <Callback {...props} />;
-          }}
-        />
-      </Switch>
-      <Footer />
-    </div>
-  </Router>
+  <div className="app">
+    <Header history={history} auth={auth} />
+
+    <Route exact path="/" render={props => <HomePage auth={auth} {...props} />} />
+    <Route path="/calendar" render={props => <CalendarPage auth={auth} {...props} />} />
+    <Route path="/members" render={props => <MembersPage auth={auth} {...props} />} />
+    <Route
+      path="/callback"
+      render={props => {
+        handleAuthentication(props);
+        return <Callback {...props} />;
+      }}
+    />
+
+    <Footer />
+  </div>
 );
 
 export default AppWrapper;

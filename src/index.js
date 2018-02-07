@@ -9,7 +9,7 @@ import AppWrapper from './containers/AppWrapper/AppWrapper';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-const target = document.getElementById('root');
+const rootElement = document.getElementById('root');
 
 render(
   <Provider store={store}>
@@ -17,6 +17,6 @@ render(
       <AppWrapper />
     </ConnectedRouter>
   </Provider>,
-  target
+  rootElement
 );
 registerServiceWorker();

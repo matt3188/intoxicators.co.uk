@@ -5,7 +5,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import HomePage from 'containers/HomePage/HomePage';
 import CalendarPage from 'containers/CalendarPage/CalendarPage';
 import MembersPage from 'containers/MembersPage/MembersPage';
-import Callback from 'containers/Callback/Callback';
+import Callback from 'containers/CallbackPage/CallbackPage';
 
 // Components
 import Header from 'components/Header/Header';

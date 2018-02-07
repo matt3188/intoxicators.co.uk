@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-import Carousel from 'components/Carousel/';
-import Card from 'components/Card/';
-import './home.css';
+import Carousel from 'components/Carousel/Carousel';
+import Card from 'components/Card/Card';
+import './HomePage.css';
 
 const Home = props => {
   const { isAuthenticated } = props.auth;

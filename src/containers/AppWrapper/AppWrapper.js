@@ -2,14 +2,14 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 
 // Containers
-import HomePage from 'containers/HomePage';
-import CalendarPage from 'containers/CalendarPage';
-import MembersPage from 'containers/MembersPage';
-import Callback from 'containers/Callback';
+import HomePage from 'containers/HomePage/HomePage';
+import CalendarPage from 'containers/CalendarPage/CalendarPage';
+import MembersPage from 'containers/MembersPage/MembersPage';
+import Callback from 'containers/Callback/Callback';
 
 // Components
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
 
 import AuthService from 'utils/Auth';
 import history from '../../history';

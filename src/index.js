@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import AppWrapper from './containers/AppWrapper';
+import AppWrapper from './containers/AppWrapper/AppWrapper';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 

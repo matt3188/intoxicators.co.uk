@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-import Navigation from 'components/Navigation';
+import Navigation from 'components/Navigation/Navigation';
 import logo from 'images/text-logo.png';
 
 import './header.css';

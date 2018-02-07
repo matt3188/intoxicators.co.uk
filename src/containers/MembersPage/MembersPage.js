@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
 
-import './members.css';
+import './MembersPage.css';
 
 const MembersPage = () => (
   <Grid>

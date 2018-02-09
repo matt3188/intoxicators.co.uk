@@ -1,4 +1,4 @@
-import * as types from '../actions/types';
+import * as types from './types';
 // import AuthService from '../../../utils/AuthService';
 
 const initialState = {

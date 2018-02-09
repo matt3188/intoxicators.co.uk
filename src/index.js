@@ -19,4 +19,5 @@ render(
   </Provider>,
   rootElement
 );
+
 registerServiceWorker();

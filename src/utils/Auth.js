@@ -1,48 +1,58 @@
 import auth0 from 'auth0-js';
+import AuthConfig from './auth0-variables';
 
-import config from './auth0-variables';
-import history from '../history';
+class Auth {
+  auth0 = new auth0.WebAuth({
+    domain: AuthConfig.DOMAIN,
+    clientID: AuthConfig.CLIENT_ID,
+    redirectUri: AuthConfig.REDIRECT_URL,
+    // responseType: AuthConfig.RESPONSE_TYPE,
+    // scope: AuthConfig.SCOPE,
+  });
 
-export default class AuthService {
+  // namespace = AuthConfig.NAMESPACE;
+
   constructor() {
-    this.auth0 = new auth0.WebAuth({
-      domain: config.AUTH0_DOMAIN,
-      clientID: config.AUTH0_CLIENT_ID,
-      redirectUri: config.REDIRECT_URL,
-      audience: `https://${config.AUTH0_DOMAIN}/userinfo`,
-      responseType: 'token id_token',
-      scope: 'openid',
-    });
-
     this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
-    // this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.getProfile = this.getProfile.bind(this);
   }
 
   login() {
     this.auth0.authorize();
   }
 
-  isAuthenticated() {
-    return AuthService.getToken();
+  searchForLogin() {
+    if (this.isAuthenticated()) {
+      // Execute logic upon entering the application.
+    }
   }
 
   handleAuthentication() {
-    this.auth0.parseHash((err, authResult) => {
+    return this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        AuthService.setToken(authResult);
-        history.replace('/');
+        // Save the relevant auth information to localStorage so the user stays logged in
+        this.setSession(authResult);
       } else if (err) {
-        history.replace('/');
         console.log(err);
       }
     });
   }
 
-  static loggedIn() {
-    // Checks if there is a saved token and it's still valid
-    const token = AuthService.getToken();
-    return !!token && !AuthService.isTokenExpired(token);
+  // Custom claims need to be namespaced, so we need to know how to find the key
+  // we want.
+  // buildMetadateKey() {
+  //   return this.namespace + '-user_metadata';
+  // }
+
+  setSession(authResult) {
+    // Set the time that the access token will expire at
+    let expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', expiresAt);
   }
 
   logout() {
@@ -50,30 +60,37 @@ export default class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    localStorage.removeItem('profile');
-    // navigate to the home route
-    history.replace('/');
   }
 
-  static getProfile() {
-    // Retrieves the profile data from window.localStorage
-    const profile = window.localStorage.getItem('profile');
-    return profile ? JSON.parse(window.localStorage.profile) : {};
+  isAuthenticated() {
+    const accessToken = localStorage.getItem('access_token');
+    const idToken = localStorage.getItem('id_token');
+    const expiresAt = localStorage.getItem('expires_at');
+
+    if (!(accessToken && idToken && expiresAt)) {
+      return false;
+    }
+
+    return new Date().getTime() < expiresAt;
   }
 
-  static setProfile(profile) {
-    // Saves profile data to window.localStorage
-    window.localStorage.setItem('profile', JSON.stringify(profile));
-    // Triggers profile_updated event to update the UI
+  getAccessToken() {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('No access token found');
+    }
+    return accessToken;
   }
 
-  static setToken(idToken) {
-    // Saves user token to window.localStorage
-    window.localStorage.setItem('id_token', idToken);
-  }
-
-  static getToken() {
-    // Retrieves the user token from window.localStorage
-    return window.localStorage.getItem('id_token');
+  getProfile(cb) {
+    let accessToken = this.getAccessToken();
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        this.userProfile = profile;
+      }
+      cb(err, profile);
+    });
   }
 }
+
+export default new Auth();

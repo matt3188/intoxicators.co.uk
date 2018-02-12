@@ -1,7 +1,6 @@
 import Auth from 'utils/Auth';
 import * as types from './types';
 
-  isAuthenticated: false,
 export default function authReducer(
   state = {
     isAuthenticated: !Auth.isTokenExpired(),

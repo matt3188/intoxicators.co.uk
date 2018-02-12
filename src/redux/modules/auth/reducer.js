@@ -1,40 +1,38 @@
+import Auth from 'utils/Auth';
 import * as types from './types';
-// import AuthService from '../../../utils/AuthService';
 
-const initialState = {
   isAuthenticated: false,
-  profile: null,
-  error: null,
-};
-
-export default function auth(state = initialState, action) {
+export default function authReducer(
+  state = {
+    isAuthenticated: !Auth.isTokenExpired(),
+    isFetching: false,
+    profile: Auth.getProfile(),
+    error: null,
+  },
+  action
+) {
   switch (action.type) {
-    case types.LOGIN_SUCCESS: {
+    case types.LOGIN_SUCCESS:
       return {
-        ...initialState,
+        ...state,
+        isFetching: false,
         isAuthenticated: true,
-        profile: action.data,
+        profile: action.payload.profile,
       };
-    }
-
-    case types.LOGIN_FAILURE: {
+    case types.LOGIN_FAILURE:
       return {
-        ...initialState,
+        ...state,
+        isFetching: false,
+        isAuthenticated: false,
+        profile: {},
         error: action.error,
       };
-    }
-
-    case types.RECEIVE_PROFILE: {
+    case types.LOGOUT_SUCCESS:
       return {
-        ...initialState,
-        profile: action.data,
+        ...state,
+        isAuthenticated: false,
+        profile: {},
       };
-    }
-
-    case types.LOGGED_OUT: {
-      return initialState;
-    }
-
     default:
       return state;
   }

@@ -11,24 +11,21 @@ import Callback from 'containers/CallbackPage/CallbackPage';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 
-import AuthService from 'utils/Auth';
-import history from '../../history';
+import Auth from 'utils/Auth';
+import ProtectedRoute from 'utils/ProtectedRoute';
 
-const auth = new AuthService();
-
-const handleAuthentication = nextState => {
+const handleAuthentication = (nextState, replace) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    auth.handleAuthentication();
+    Auth.handleAuthentication();
   }
 };
-
 const AppWrapper = () => (
   <div className="app">
-    <Header history={history} auth={auth} />
+    <Header />
 
-    <Route exact path="/" render={props => <HomePage auth={auth} {...props} />} />
-    <Route path="/calendar" render={props => <CalendarPage auth={auth} {...props} />} />
-    <Route path="/members" render={props => <MembersPage auth={auth} {...props} />} />
+    <Route exact path="/" component={HomePage} />
+    <Route path="/calendar" component={CalendarPage} />
+    <Route path="/members" component={MembersPage} />
     <Route
       path="/callback"
       render={props => {
@@ -36,6 +33,8 @@ const AppWrapper = () => (
         return <Callback {...props} />;
       }}
     />
+
+    <ProtectedRoute path="/home" component={HomePage} redirectPath="/login" />
 
     <Footer />
   </div>

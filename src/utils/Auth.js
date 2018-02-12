@@ -1,4 +1,5 @@
 import auth0 from 'auth0-js';
+import jwtDecode from 'jwt-decode';
 import AuthConfig from './auth0-variables';
 
 class Auth {
@@ -6,7 +7,7 @@ class Auth {
     domain: AuthConfig.DOMAIN,
     clientID: AuthConfig.CLIENT_ID,
     redirectUri: AuthConfig.REDIRECT_URL,
-    // responseType: AuthConfig.RESPONSE_TYPE,
+    responseType: AuthConfig.RESPONSE_TYPE,
     // scope: AuthConfig.SCOPE,
   });
 
@@ -17,7 +18,7 @@ class Auth {
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
-    this.getProfile = this.getProfile.bind(this);
+    // this.getProfile = this.getProfile.bind(this);
   }
 
   login() {
@@ -44,7 +45,7 @@ class Auth {
   // Custom claims need to be namespaced, so we need to know how to find the key
   // we want.
   // buildMetadateKey() {
-  //   return this.namespace + '-user_metadata';
+  //     return this.namespace + '-user_metadata';
   // }
 
   setSession(authResult) {
@@ -82,6 +83,34 @@ class Auth {
     return accessToken;
   }
 
+  getToken() {
+    // Retrieves the user token from window.localStorage
+    return window.localStorage.getItem('id_token');
+  }
+
+  getTokenExpirationDate() {
+    const token = this.getToken();
+    const decoded = jwtDecode(token);
+    if (!decoded.exp) {
+      return null;
+    }
+
+    const date = new Date(0); // The 0 here is the key, which sets the date to the epoch
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
+
+  isTokenExpired() {
+    const token = this.getToken();
+    if (!token) return true;
+    const date = this.getTokenExpirationDate();
+    const offsetSeconds = 0;
+    if (date === null) {
+      return false;
+    }
+    return !(date.valueOf() > new Date().valueOf() + offsetSeconds * 1000);
+  }
+
   getProfile(cb) {
     let accessToken = this.getAccessToken();
     this.auth0.client.userInfo(accessToken, (err, profile) => {
@@ -93,4 +122,4 @@ class Auth {
   }
 }
 
-export default Auth;
+export default new Auth();

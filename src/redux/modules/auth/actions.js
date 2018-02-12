@@ -20,5 +20,5 @@ export const receiveProfile = data => ({
 });
 
 export const logoutSuccess = () => ({
-  type: types.LOGGED_OUT,
+  type: types.LOGOUT_SUCCESS,
 });

@@ -10,16 +10,23 @@ import logo from './text-logo.png';
 import './header.css';
 
 class HeaderView extends Component {
-  handleLoginClick = () => {
+  constructor() {
+    super();
+
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+  }
+
+  handleLoginClick() {
     this.props.authService.login();
     this.props.loginRequest();
-  };
+  }
 
-  handleLogoutClick = () => {
+  handleLogoutClick() {
     this.props.logoutSuccess();
     AuthService.logout();
     this.props.history.push({ pathname: '/' });
-  };
+  }
 
   render() {
     const { auth } = this.props;

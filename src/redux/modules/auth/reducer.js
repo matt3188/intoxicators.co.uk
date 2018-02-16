@@ -1,16 +1,22 @@
-import Auth from 'utils/Auth';
+import AuthService from 'utils/AuthService';
 import * as types from './types';
 
 export default function authReducer(
   state = {
-    isAuthenticated: !Auth.isTokenExpired(),
+    isAuthenticated: !AuthService.isTokenExpired(),
     isFetching: false,
-    profile: Auth.getProfile(),
+    profile: AuthService.getProfile(),
     error: null,
   },
   action
 ) {
   switch (action.type) {
+    case types.LOGIN_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+        error: null,
+      };
     case types.LOGIN_SUCCESS:
       return {
         ...state,
@@ -18,7 +24,7 @@ export default function authReducer(
         isAuthenticated: true,
         profile: action.payload.profile,
       };
-    case types.LOGIN_FAILURE:
+    case types.LOGIN_ERROR:
       return {
         ...state,
         isFetching: false,

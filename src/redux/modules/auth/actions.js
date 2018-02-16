@@ -1,22 +1,17 @@
 import * as types from './types';
 
-export const receiveLogin = user => ({
+export const loginRequest = () => ({
+  type: types.LOGIN_REQUEST,
+});
+
+export const loginSuccess = profile => ({
   type: types.LOGIN_SUCCESS,
-  isFetching: false,
-  isAuthenticated: true,
-  id_token: user.id_token,
+  payload: { profile },
 });
 
-export const loginError = message => ({
-  type: types.LOGIN_FAILURE,
-  isFetching: false,
-  isAuthenticated: false,
-  message,
-});
-
-export const receiveProfile = data => ({
-  type: types.RECEIVE_PROFILE,
-  data,
+export const loginError = error => ({
+  type: types.LOGIN_ERROR,
+  error,
 });
 
 export const logoutSuccess = () => ({

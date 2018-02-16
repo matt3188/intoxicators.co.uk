@@ -8,9 +8,14 @@ export default class AuthService {
     // Configure Auth0 lock
     this.lock = new Auth0Lock(config.CLIENT_ID, config.DOMAIN, {
       auth: {
-        redirectUrl: config.REDIRECT_URL,
+        redirectUrl: window.location.href + config.REDIRECT_URL,
         responseType: config.RESPONSE_TYPE,
       },
+      theme: {
+        logo: './images/head.png',
+        primaryColor: '#b2984d',
+      },
+      autoclose: true,
       languageDictionary: {
         title: 'Intoxicators',
       },

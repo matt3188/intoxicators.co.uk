@@ -1,33 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-import Auth from 'utils/Auth';
+import { authActions } from '../../redux/modules/auth';
 
-import Navigation from 'components/Navigation/Navigation';
-import logo from './text-logo.png';
+import HeaderView from './HeaderView';
 
-import './header.css';
+const mapStateToProps = ({ auth }) => ({
+  auth,
+});
 
-const Header = () => (
-  <div className="header">
-    <Link to="/">
-      <img src={logo} className="text-logo" alt="Intoxicators logo" />
-    </Link>
-    <div className="login">
-      {!Auth.isAuthenticated && (
-        <Button bsStyle="primary" className="btn-margin" onClick={Auth.login()}>
-          Log In
-        </Button>
-      )}
-      {Auth.isAuthenticated && (
-        <Button bsStyle="primary" className="btn-margin" onClick={Auth.logout()}>
-          Log Out
-        </Button>
-      )}
-    </div>
-    <Navigation />
-  </div>
-);
+const mapDispatchToProps = dispatch => ({
+  loginRequest: () => dispatch(authActions.loginRequest()),
+  logoutSuccess: () => dispatch(authActions.logoutSuccess()),
+});
 
-export default Header;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderView));

@@ -1,21 +1,13 @@
 import React from 'react';
-import { push } from 'react-router-redux';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
 import { Grid, Row, Col } from 'react-bootstrap';
 
 import Carousel from 'components/Carousel/Carousel';
 import Card from 'components/Card/Card';
 import './HomePage.css';
 
-const Home = props => (
+const HomePage = () => (
   <div className="homepage">
     <Carousel />
-
-    <section>
-      <button onClick={() => props.changePage()}>Go to about page via redux</button>
-    </section>
 
     <Grid>
       <Row className="show-grid">
@@ -33,12 +25,4 @@ const Home = props => (
   </div>
 );
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      changePage: () => push('/about-us'),
-    },
-    dispatch
-  );
-
-export default connect(null, mapDispatchToProps)(Home);
+export default HomePage;

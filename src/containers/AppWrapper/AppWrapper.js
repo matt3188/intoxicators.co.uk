@@ -1,44 +1,17 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-// Containers
-import HomePage from 'containers/HomePage/HomePage';
-import CalendarPage from 'containers/CalendarPage/CalendarPage';
-import MembersPage from 'containers/MembersPage/MembersPage';
-import Callback from 'containers/CallbackPage/CallbackPage';
+import { authActions } from '../../redux/modules/auth';
+import AppView from './AppWrapperView';
 
-// Components
-import Header from 'components/Header/Header';
-import Footer from 'components/Footer/Footer';
+const mapDispatchToProps = dispatch => ({
+  loginSuccess: profile => dispatch(authActions.loginSuccess(profile)),
+  loginError: error => dispatch(authActions.loginError(error)),
+});
 
-import AuthService from 'utils/Auth';
-import history from '../../history';
-
-const auth = new AuthService();
-
-const handleAuthentication = nextState => {
-  if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    auth.handleAuthentication();
-  }
-};
-
-const AppWrapper = () => (
-  <div className="app">
-    <Header history={history} auth={auth} />
-
-    <Route exact path="/" render={props => <HomePage auth={auth} {...props} />} />
-    <Route path="/calendar" render={props => <CalendarPage auth={auth} {...props} />} />
-    <Route path="/members" render={props => <MembersPage auth={auth} {...props} />} />
-    <Route
-      path="/callback"
-      render={props => {
-        handleAuthentication(props);
-        return <Callback {...props} />;
-      }}
-    />
-
-    <Footer />
-  </div>
+export default withRouter(
+  connect(
+    null, // no mapStateToProps
+    mapDispatchToProps
+  )(AppView)
 );
-
-export default AppWrapper;

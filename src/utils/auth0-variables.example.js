@@ -1,5 +1,6 @@
 export default {
-  AUTH0_CLIENT_ID: 'client id',
-  AUTH0_DOMAIN: 'domain',
-  REDIRECT_URL: 'redirect url',
+  CLIENT_ID: 'client_id',
+  DOMAIN: 'domain',
+  REDIRECT_URL: 'callback_url',
+  RESPONSE_TYPE: 'token id_token',
 };

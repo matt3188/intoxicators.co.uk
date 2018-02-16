@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './navigation.css';
 
 const Navigation = () => (
-  <ul className="navigation">
+  <ul className="navigation dashed-border">
     <li>
       <NavLink to="/">Home</NavLink>
     </li>

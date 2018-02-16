@@ -26,8 +26,29 @@ a:hover {
 .btn {
   background-color: #b2984d;
   border-color: #b2984d;
+  color: #fff;
 }
 .btn:hover {
   background-color: #997f34;
   border-color: #997f34;
+}
+
+.dashed-border {
+  position: relative;
+}
+.dashed-border:before,
+.dashed-border:after {
+  content: '';
+  border-top: 1px dashed #f1f5d4;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  left: 0;
+}
+.dashed-border:before {
+  top: 5px;
+}
+.dashed-border:after {
+  bottom: 5px;
 }

@@ -56,7 +56,6 @@ export default class AuthService {
   }
 
   static setToken(idToken) {
-    console.log('idToken', idToken);
     // Saves user token to window.localStorage
     window.localStorage.setItem('id_token', idToken);
   }

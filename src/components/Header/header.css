@@ -1,6 +1,7 @@
 .header {
   position: relative;
   text-align: center;
+  margin-bottom: 20px;
 }
 .login {
   position: absolute;

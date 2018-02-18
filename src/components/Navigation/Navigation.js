@@ -5,7 +5,9 @@ import './navigation.css';
 const Navigation = () => (
   <ul className="navigation dashed-border">
     <li>
-      <NavLink to="/">Home</NavLink>
+      <NavLink exact to="/">
+        Home
+      </NavLink>
     </li>
     <li>
       <NavLink to="/members">Our Members</NavLink>

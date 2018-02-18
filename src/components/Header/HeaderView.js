@@ -15,6 +15,7 @@ class HeaderView extends Component {
 
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.goToProfile = this.goToProfile.bind(this);
   }
 
   handleLoginClick() {
@@ -28,6 +29,10 @@ class HeaderView extends Component {
     this.props.history.push({ pathname: '/' });
   }
 
+  goToProfile() {
+    this.props.history.push({ pathname: '/profile' });
+  }
+
   render() {
     const { auth } = this.props;
 
@@ -39,8 +44,7 @@ class HeaderView extends Component {
         <div className="login">
           {auth.isAuthenticated ? (
             <div>
-              <img src={auth.profile.picture} height="40px" alt="profile" />
-              <span>Welcome, {auth.profile.nickname}</span>
+              <Button onClick={this.goToProfile}>My Profile</Button>
               <Button onClick={this.handleLogoutClick}>Logout</Button>
             </div>
           ) : (

@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/HomePage';
 import CalendarPage from 'containers/CalendarPage/CalendarPage';
 import MembersPage from 'containers/MembersPage/MembersPage';
+import ShopWrapper from 'containers/ShopWrapper/ShopWrapper';
 
 // Components
 import Header from 'components/Header/Header';
@@ -44,6 +45,7 @@ class AppWrapperView extends Component {
         <Route exact path="/" component={HomePage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route path="/members" component={MembersPage} />
+        <Route path="/shop" component={ShopWrapper} />
         <Route component={PageNotFound} />
 
         <Footer />

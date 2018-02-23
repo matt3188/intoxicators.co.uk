@@ -8,7 +8,7 @@ export default class AuthService {
     // Configure Auth0 lock
     this.lock = new Auth0Lock(config.CLIENT_ID, config.DOMAIN, {
       auth: {
-        redirectUrl: window.location.href + config.REDIRECT_URL,
+        redirectUrl: config.REDIRECT_URL,
         responseType: config.RESPONSE_TYPE,
       },
       theme: {

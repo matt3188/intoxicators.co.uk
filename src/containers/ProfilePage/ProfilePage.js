@@ -7,7 +7,6 @@ import './ProfilePage.css';
 class Profile extends Component {
   componentWillMount() {
     this.profile = AuthService.getProfile();
-    console.log(this.profile.email_verified);
   }
   render() {
     return (

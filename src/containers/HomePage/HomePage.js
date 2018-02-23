@@ -15,10 +15,10 @@ const HomePage = () => (
           <Card title="Upcoming events" image="images/logo.jpg" linkTo="/calendar" />
         </Col>
         <Col sm={6} md={4}>
-          <Card title="Our Members" image="images/slider-03.jpg" linkTo="/calendar" />
+          <Card title="Our Members" image="images/slider-03.jpg" linkTo="/members" />
         </Col>
         <Col sm={6} md={4}>
-          <Card title="Join the club" image="images/slider-04.jpg" linkTo="/calendar" />
+          <Card title="Join the club" image="images/slider-04.jpg" linkTo="/join" />
         </Col>
       </Row>
     </Grid>

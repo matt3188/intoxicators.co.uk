@@ -9,6 +9,7 @@ import MembersPage from 'containers/MembersPage/MembersPage';
 // Components
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
+import PageNotFound from 'components/PageNotFound/PageNotFound';
 
 import AuthService from 'utils/AuthService';
 
@@ -43,6 +44,7 @@ class AppWrapperView extends Component {
         <Route exact path="/" component={HomePage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route path="/members" component={MembersPage} />
+        <Route component={PageNotFound} />
 
         <Footer />
       </div>

@@ -12,7 +12,7 @@ import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import PageNotFound from 'components/PageNotFound/PageNotFound';
 
-import AuthService from 'utils/AuthService';
+import AuthService from 'utils/AuthService/AuthService';
 
 class AppWrapperView extends Component {
   componentWillMount() {

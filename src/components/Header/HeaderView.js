@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-import AuthService from 'utils/AuthService';
+import AuthService from 'utils/AuthService/AuthService';
 
 import Navigation from 'components/Navigation/Navigation';
 import logo from './text-logo.png';

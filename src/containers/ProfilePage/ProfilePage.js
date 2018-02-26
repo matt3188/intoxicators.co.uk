@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Panel, Image } from 'react-bootstrap';
-import AuthService from 'utils/AuthService';
+import AuthService from 'utils/AuthService/AuthService';
 
 import './ProfilePage.css';
 

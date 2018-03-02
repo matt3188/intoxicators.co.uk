@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, Image } from 'react-bootstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 import AuthService from 'utils/AuthService';
 
 import './ProfilePage.css';
@@ -11,20 +11,14 @@ class Profile extends Component {
   render() {
     return (
       <div className="container">
-        <div className="profile-area">
-          <Panel>
-            <Panel.Body>
-              <h3>Hi, {this.profile.name}</h3>
-              <div className="profile-image-container">
-                <Image src={this.profile.picture} className="profile-image" alt="Profile image" circle />
-                {this.profile.email_verified && <i className="verified glyphicon glyphicon-ok" />}
-              </div>
-              <div>
-                <p>{this.profile.nickname}</p>
-              </div>
-            </Panel.Body>
-          </Panel>
-        </div>
+        <Card>
+          <CardImg src={this.profile.picture} className="profile-image" alt="Profile image" />
+          <CardBody>
+            <CardTitle>Hi, {this.profile.name}</CardTitle>
+            {this.profile.email_verified && <i className="verified glyphicon glyphicon-ok" />}
+            <CardText>{this.profile.nickname}</CardText>
+          </CardBody>
+        </Card>
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
+import { NavbarToggler } from 'reactstrap';
+
 // Containers
 import HomePage from 'containers/HomePage/HomePage';
 import CalendarPage from 'containers/CalendarPage/CalendarPage';

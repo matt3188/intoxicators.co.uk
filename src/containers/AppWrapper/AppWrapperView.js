@@ -9,13 +9,32 @@ import CalendarPage from 'containers/CalendarPage/CalendarPage';
 import MembersPage from 'containers/MembersPage/MembersPage';
 
 // Components
+import Navigation from 'components/Navigation/Navigation';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import PageNotFound from 'components/PageNotFound/PageNotFound';
 
+// Utils
 import AuthService from 'utils/AuthService';
+import DesktopBreakPoint from 'utils/Responsive/DesktopBreakPoint';
+import TabletBreakPoint from 'utils/Responsive/TabletBreakPoint';
+import PhoneBreakpoint from 'utils/Responsive/PhoneBreakpoint';
 
 class AppWrapperView extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isOpen: false,
+    };
+    this.toggle = this.toggle.bind(this);
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  }
+
   componentWillMount() {
     this.authService = new AuthService();
 
@@ -40,15 +59,40 @@ class AppWrapperView extends Component {
 
   render() {
     return (
-      <div className="app">
-        <Header authService={this.authService} />
+      <div>
+        <PhoneBreakpoint>
+          <div>
+            <Navigation />
+            <div className={`app ${this.state.isOpen ? 'menu-open' : ''}`}>
+              <NavbarToggler onClick={this.toggle} />
 
-        <Route exact path="/" component={HomePage} />
-        <Route path="/calendar" component={CalendarPage} />
-        <Route path="/members" component={MembersPage} />
-        <Route component={PageNotFound} />
+              <Header authService={this.authService} />
 
-        <Footer />
+              <Route exact path="/" component={HomePage} />
+              <Route path="/calendar" component={CalendarPage} />
+              <Route path="/members" component={MembersPage} />
+              <Route component={PageNotFound} />
+
+              <Footer />
+            </div>
+          </div>
+        </PhoneBreakpoint>
+
+        <TabletBreakPoint>
+          <div className={`app ${this.state.isOpen ? 'menu-open' : ''}`}>
+            <NavbarToggler onClick={this.toggle} />
+
+            <Header authService={this.authService} />
+            <Navigation />
+
+            <Route exact path="/" component={HomePage} />
+            <Route path="/calendar" component={CalendarPage} />
+            <Route path="/members" component={MembersPage} />
+            <Route component={PageNotFound} />
+
+            <Footer />
+          </div>
+        </TabletBreakPoint>
       </div>
     );
   }

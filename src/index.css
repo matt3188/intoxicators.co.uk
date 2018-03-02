@@ -6,14 +6,28 @@ body {
   font-family: sans-serif;
   color: #fff;
   background-color: #201b0e;
+  overflow-x: hidden;
+}
+.navbar-toggler {
+  position: absolute;
+  z-index: 999;
+}
+.app {
+  min-height: 100%;
+  min-width: 100%;
+  background-color: #201b0e;
+  position: relative;
+  top: 0;
+  bottom: 100%;
+  left: 0;
+  z-index: 1;
+  transition: 0.3s;
+}
+.app.menu-open {
+  left: 200px;
 }
 .sub-heading {
   font-family: 'Pacifico', cursive;
-}
-
-.text-logo {
-  max-width: 300px;
-  padding: 20px 0;
 }
 
 a {
@@ -33,22 +47,24 @@ a:hover {
   border-color: #997f34;
 }
 
-.dashed-border {
-  position: relative;
-}
-.dashed-border:before,
-.dashed-border:after {
-  content: '';
-  border-top: 1px dashed #f1f5d4;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
-  width: 100%;
-  height: 1px;
-  position: absolute;
-  left: 0;
-}
-.dashed-border:before {
-  top: 5px;
-}
-.dashed-border:after {
-  bottom: 5px;
+@media (min-width: 768px) {
+  .dashed-border {
+    position: relative;
+  }
+  .dashed-border:before,
+  .dashed-border:after {
+    content: '';
+    border-top: 1px dashed #f1f5d4;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    left: 0;
+  }
+  .dashed-border:before {
+    top: 5px;
+  }
+  .dashed-border:after {
+    bottom: 5px;
+  }
 }

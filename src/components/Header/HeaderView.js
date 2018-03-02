@@ -4,7 +4,6 @@ import { Button } from 'reactstrap';
 
 import AuthService from 'utils/AuthService';
 
-import Navigation from 'components/Navigation/Navigation';
 import logo from './text-logo.png';
 
 import './header.css';
@@ -52,7 +51,6 @@ class HeaderView extends Component {
           )}
           {auth.error && <p>{JSON.stringify(auth.error)}</p>}
         </div>
-        <Navigation />
       </div>
     );
   }

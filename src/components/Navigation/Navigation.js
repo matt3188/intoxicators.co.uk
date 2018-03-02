@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 import './navigation.css';
 
-const Navigation = () => (
+const Navigation = props => (
   <ul className="navigation dashed-border">
     <li>
       <NavLink exact to="/">

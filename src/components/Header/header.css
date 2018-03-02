@@ -11,3 +11,13 @@
 .login button {
   margin-left: 10px;
 }
+
+.text-logo {
+  max-width: 300px;
+  padding: 20px 0;
+}
+@media (max-width: 768px) {
+  .text-logo {
+    max-width: 220px;
+  }
+}

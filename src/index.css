@@ -8,10 +8,6 @@ body {
   background-color: #201b0e;
   overflow-x: hidden;
 }
-.navbar-toggler {
-  position: absolute;
-  z-index: 999;
-}
 .app {
   min-height: 100%;
   min-width: 100%;

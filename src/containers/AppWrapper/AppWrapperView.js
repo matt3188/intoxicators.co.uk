@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-
-import { NavbarToggler } from 'reactstrap';
+import { Route, Switch } from 'react-router-dom';
 
 // Containers
 import HomePage from 'containers/HomePage/HomePage';
 import CalendarPage from 'containers/CalendarPage/CalendarPage';
 import MembersPage from 'containers/MembersPage/MembersPage';
+import ProfilePage from 'containers/ProfilePage/ProfilePage';
 
 // Components
 import Navigation from 'components/Navigation/Navigation';
@@ -16,23 +15,21 @@ import PageNotFound from 'components/PageNotFound/PageNotFound';
 
 // Utils
 import AuthService from 'utils/AuthService';
-import DesktopBreakPoint from 'utils/Responsive/DesktopBreakPoint';
 import TabletBreakPoint from 'utils/Responsive/TabletBreakPoint';
 import PhoneBreakpoint from 'utils/Responsive/PhoneBreakpoint';
+
+import ShadowWrapper from 'utils/ShadowWrapper/ShadowWrapper';
+import { FaBars } from 'react-icons/lib/fa/';
 
 class AppWrapperView extends Component {
   constructor() {
     super();
 
-    this.state = {
-      isOpen: false,
-    };
-    this.toggle = this.toggle.bind(this);
+    this.toggleNav = this.toggleNav.bind(this);
   }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
+
+  toggleNav() {
+    this.props.openMenu();
   }
 
   componentWillMount() {
@@ -57,21 +54,29 @@ class AppWrapperView extends Component {
     });
   }
 
+  renderRoutes() {
+    return (
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/calendar" component={CalendarPage} />
+        <Route path="/members" component={MembersPage} />
+        <Route path="/profile" component={ProfilePage} />
+        <Route component={PageNotFound} />
+      </Switch>
+    );
+  }
+
   render() {
     return (
-      <div>
+      <ShadowWrapper>
         <PhoneBreakpoint>
           <div>
             <Navigation />
-            <div className={`app ${this.state.isOpen ? 'menu-open' : ''}`}>
-              <NavbarToggler onClick={this.toggle} />
-
+            <div className={`app ${this.props.menuOpen ? 'menu-open' : ''}`}>
+              <FaBars onClick={this.toggleNav} />
               <Header authService={this.authService} />
 
-              <Route exact path="/" component={HomePage} />
-              <Route path="/calendar" component={CalendarPage} />
-              <Route path="/members" component={MembersPage} />
-              <Route component={PageNotFound} />
+              {this.renderRoutes()}
 
               <Footer />
             </div>
@@ -79,21 +84,16 @@ class AppWrapperView extends Component {
         </PhoneBreakpoint>
 
         <TabletBreakPoint>
-          <div className={`app ${this.state.isOpen ? 'menu-open' : ''}`}>
-            <NavbarToggler onClick={this.toggle} />
-
+          <div className={`app ${this.props.menuOpen ? 'menu-open' : ''}`}>
             <Header authService={this.authService} />
             <Navigation />
 
-            <Route exact path="/" component={HomePage} />
-            <Route path="/calendar" component={CalendarPage} />
-            <Route path="/members" component={MembersPage} />
-            <Route component={PageNotFound} />
+            {this.renderRoutes()}
 
             <Footer />
           </div>
         </TabletBreakPoint>
-      </div>
+      </ShadowWrapper>
     );
   }
 }

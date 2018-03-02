@@ -1,11 +1,12 @@
 .profile-area {
   color: #000;
 }
-.profile-image-container {
-  position: relative;
-  width: 140px;
+.card {
+  max-width: 320px;
 }
 .profile-image {
+  position: relative;
+  max-width: 140px;
   border: 10px solid lightgrey;
 }
 .verified {

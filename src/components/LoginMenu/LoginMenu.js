@@ -34,14 +34,14 @@ class LoginMenu extends Component {
     return (
       <ShadowWrapper>
         {auth.isAuthenticated ? (
-          <ShadowWrapper>
-            <Button onClick={this.goToProfile}>
+          <div>
+            <Button className="mr-2" onClick={this.goToProfile}>
               <FaUser />
             </Button>
             <Button onClick={this.handleLogoutClick}>
               <FaSignOut />
             </Button>
-          </ShadowWrapper>
+          </div>
         ) : (
           <Button onClick={this.handleLoginClick}>
             <FaUser />

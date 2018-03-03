@@ -22,12 +22,12 @@ body {
   position: relative;
   top: 0;
   bottom: 100%;
-  left: 0;
+  right: 0;
   z-index: 1;
   transition: 0.3s;
 }
 .app.menu-open {
-  left: 200px;
+  right: 200px;
 }
 .app.menu-open:after {
   content: '';

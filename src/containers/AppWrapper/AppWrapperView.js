@@ -84,10 +84,12 @@ class AppWrapperView extends Component {
       <ShadowWrapper>
         <PhoneBreakpoint>
           <ShadowWrapper>
-            <Navigation />
+            <Navigation clickHandler={this.toggleMenu} />
             <div className={`app ${this.props.menuState ? 'menu-open' : ''}`}>
-              <FaBars onClick={this.toggleMenu} />
-              <Header authService={this.authService} />
+              <div className="header">
+                <Header authService={this.authService} />
+                <FaBars className="nav-toggle" width="25" height="25" onClick={this.toggleMenu} />
+              </div>
 
               {this.renderRoutes()}
 
@@ -98,7 +100,9 @@ class AppWrapperView extends Component {
 
         <TabletBreakPoint>
           <div className={`app ${this.props.menuState ? 'menu-open' : ''}`}>
-            <Header authService={this.authService} />
+            <div className="header">
+              <Header authService={this.authService} />
+            </div>
             <Navigation />
 
             {this.renderRoutes()}

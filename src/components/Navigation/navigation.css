@@ -1,9 +1,13 @@
 /* Mobile first */
-.navigation {
+.navigation-container {
   padding: 0;
   margin: 0;
   background-color: #b2984d;
   text-align: left;
+}
+.navigation {
+  margin: 0;
+  padding: 0;
 }
 .navigation li {
   display: block;
@@ -18,24 +22,29 @@
 .navigation a.active {
   color: #000;
 }
+.header.header-navigation {
+  justify-content: flex-end;
+  min-height: 80px;
+}
 
 /* Only Mobile */
 @media (max-width: 768px) {
-  .navigation {
-    width: 100%;
+  .navigation-container {
+    width: 200px;
     height: 100%;
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
-    left: 0;
     z-index: 0;
     transition: 0.3s;
+    box-shadow: inset 5px 0 5px -5px rgba(0, 0, 0, 0.8);
   }
 }
 /* Only Desktop */
 @media (min-width: 768px) {
-  .navigation {
+  .navigation-container {
+    width: 100%;
     position: relative;
     box-shadow: 0 0 10px 0 #000;
     text-align: center;

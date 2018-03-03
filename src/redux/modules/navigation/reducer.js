@@ -2,7 +2,7 @@ import * as types from './types';
 
 export default function navigationReducer(
   state = {
-    menuOpen: false,
+    menuState: false,
   },
   action
 ) {
@@ -10,7 +10,12 @@ export default function navigationReducer(
     case types.TOGGLE_MENU:
       return {
         ...state,
-        menuOpen: !state.menuOpen,
+        menuState: !state.menuState,
+      };
+    case types.CLOSE_MENU:
+      return {
+        ...state,
+        menuState: false,
       };
     default:
       return state;

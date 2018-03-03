@@ -6,13 +6,14 @@ import { navigationActions } from '../../redux/modules/navigation';
 import AppView from './AppWrapperView';
 
 const mapStateToProps = state => ({
-  menuOpen: state.navigation.menuOpen,
+  menuState: state.navigation.menuState,
 });
 
 const mapDispatchToProps = dispatch => ({
   loginSuccess: profile => dispatch(authActions.loginSuccess(profile)),
   loginError: error => dispatch(authActions.loginError(error)),
-  openMenu: () => dispatch(navigationActions.openMenu()),
+  toggleMenu: () => dispatch(navigationActions.toggleMenu()),
+  closeMenu: () => dispatch(navigationActions.closeMenu()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppView));

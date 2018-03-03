@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+// Icon
+import { FaBars } from 'react-icons/lib/fa/';
+
 // Containers
 import HomePage from 'containers/HomePage/HomePage';
 import CalendarPage from 'containers/CalendarPage/CalendarPage';
@@ -17,19 +20,21 @@ import PageNotFound from 'components/PageNotFound/PageNotFound';
 import AuthService from 'utils/AuthService';
 import TabletBreakPoint from 'utils/Responsive/TabletBreakPoint';
 import PhoneBreakpoint from 'utils/Responsive/PhoneBreakpoint';
-
 import ShadowWrapper from 'utils/ShadowWrapper/ShadowWrapper';
-import { FaBars } from 'react-icons/lib/fa/';
 
 class AppWrapperView extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.toggleNav = this.toggleNav.bind(this);
-  }
+    // Toggle nav on route change
+    this.props.history.listen(location => {
+      if (this.props.menuState) {
+        this.closeMenu();
+      }
+    });
 
-  toggleNav() {
-    this.props.openMenu();
+    this.toggleMenu = this.toggleMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
   }
 
   componentWillMount() {
@@ -54,6 +59,14 @@ class AppWrapperView extends Component {
     });
   }
 
+  toggleMenu() {
+    this.props.toggleMenu();
+  }
+
+  closeMenu() {
+    this.props.closeMenu();
+  }
+
   renderRoutes() {
     return (
       <Switch>
@@ -72,8 +85,8 @@ class AppWrapperView extends Component {
         <PhoneBreakpoint>
           <div>
             <Navigation />
-            <div className={`app ${this.props.menuOpen ? 'menu-open' : ''}`}>
-              <FaBars onClick={this.toggleNav} />
+            <div className={`app ${this.props.menuState ? 'menu-open' : ''}`}>
+              <FaBars onClick={this.toggleMenu} />
               <Header authService={this.authService} />
 
               {this.renderRoutes()}
@@ -84,7 +97,7 @@ class AppWrapperView extends Component {
         </PhoneBreakpoint>
 
         <TabletBreakPoint>
-          <div className={`app ${this.props.menuOpen ? 'menu-open' : ''}`}>
+          <div className={`app ${this.props.menuState ? 'menu-open' : ''}`}>
             <Header authService={this.authService} />
             <Navigation />
 

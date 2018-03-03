@@ -1,4 +1,4 @@
-import AuthService from 'utils/AuthService';
+import AuthService from 'utils/AuthService/AuthService';
 import * as types from './types';
 
 export default function authReducer(

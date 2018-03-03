@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AuthService from 'utils/AuthService';
+import AuthService from 'utils/AuthService/AuthService';
 import ShadowWrapper from 'utils/ShadowWrapper/ShadowWrapper';
 
 import { Alert, Button } from 'reactstrap';

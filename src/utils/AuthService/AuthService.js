@@ -5,10 +5,13 @@ import config from './auth0-variables';
 
 export default class AuthService {
   constructor() {
+    const protocol = window.location.protocol;
+    const site = window.location.host;
+
     // Configure Auth0 lock
     this.lock = new Auth0Lock(config.CLIENT_ID, config.DOMAIN, {
       auth: {
-        redirectUrl: config.REDIRECT_URL,
+        redirectUrl: `${protocol}//${site}/${config.REDIRECT_URL}`,
         responseType: config.RESPONSE_TYPE,
       },
       theme: {

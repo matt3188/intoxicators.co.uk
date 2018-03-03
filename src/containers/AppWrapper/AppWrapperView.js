@@ -17,7 +17,7 @@ import Footer from 'components/Footer/Footer';
 import PageNotFound from 'components/PageNotFound/PageNotFound';
 
 // Utils
-import AuthService from 'utils/AuthService';
+import AuthService from 'utils/AuthService/AuthService';
 import TabletBreakPoint from 'utils/Responsive/TabletBreakPoint';
 import PhoneBreakpoint from 'utils/Responsive/PhoneBreakpoint';
 import ShadowWrapper from 'utils/ShadowWrapper/ShadowWrapper';

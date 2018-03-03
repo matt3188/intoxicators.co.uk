@@ -83,7 +83,7 @@ class AppWrapperView extends Component {
     return (
       <ShadowWrapper>
         <PhoneBreakpoint>
-          <div>
+          <ShadowWrapper>
             <Navigation />
             <div className={`app ${this.props.menuState ? 'menu-open' : ''}`}>
               <FaBars onClick={this.toggleMenu} />
@@ -93,7 +93,7 @@ class AppWrapperView extends Component {
 
               <Footer />
             </div>
-          </div>
+          </ShadowWrapper>
         </PhoneBreakpoint>
 
         <TabletBreakPoint>

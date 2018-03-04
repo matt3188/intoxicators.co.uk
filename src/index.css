@@ -24,6 +24,7 @@ body {
   bottom: 100%;
   right: 0;
   z-index: 1;
+  overflow-x: hidden;
   transition: 0.3s;
 }
 .app.menu-open {
@@ -40,9 +41,6 @@ body {
   left: 0;
   right: 0;
   z-index: 1;
-}
-.sub-heading {
-  font-family: 'Pacifico', cursive;
 }
 
 a {

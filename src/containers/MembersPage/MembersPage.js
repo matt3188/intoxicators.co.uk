@@ -1,35 +1,19 @@
 import React from 'react';
+
 import { Container, Row, Col } from 'reactstrap';
+import Card from 'components/Card/Card';
 
 import './MembersPage.css';
 
-const MembersPage = () => (
+const MembersPage = props => (
   <Container>
     <Row className="show-grid">
-      <Col xs={6} md={4}>
-        <img src="images/slider-01.jpg" className="members-picture" alt="" />
-        <h1>Members name</h1>
-      </Col>
-      <Col xs={6} md={4}>
-        <img src="images/slider-01.jpg" className="members-picture" alt="" />
-        <h1>Members name</h1>
-      </Col>
-      <Col xs={6} md={4}>
-        <img src="images/slider-03.jpg" className="members-picture" alt="" />
-        <h1>Members name</h1>
-      </Col>
-      <Col xs={6} md={4}>
-        <img src="images/slider-04.jpg" className="members-picture" alt="" />
-        <h1>Members name</h1>
-      </Col>
-      <Col xs={6} md={4}>
-        <img src="images/slider-05.jpg" className="members-picture" alt="" />
-        <h1>Members name</h1>
-      </Col>
-      <Col xs={6} md={4}>
-        <img src="images/slider-06.jpg" className="members-picture" alt="" />
-        <h1>Members name</h1>
-      </Col>
+      {console.log(props.members)}
+      {/*props.members.map(owner => (
+        <Col md={4} key={owner.id}>
+          <Card title={owner.name} subTitle={owner.vehicle} image={owner.image} linkTo={`/members/${owner.id}`} />
+        </Col>
+      ))*/}
     </Row>
   </Container>
 );

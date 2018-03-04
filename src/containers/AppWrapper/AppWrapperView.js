@@ -8,6 +8,7 @@ import { FaBars } from 'react-icons/lib/fa/';
 import HomePage from 'containers/HomePage/HomePage';
 import CalendarPage from 'containers/CalendarPage/CalendarPage';
 import MembersPage from 'containers/MembersPage/MembersPage';
+import MemberPage from 'containers/MemberPage/MemberPage';
 import ProfilePage from 'containers/ProfilePage/ProfilePage';
 
 // Components
@@ -21,6 +22,8 @@ import AuthService from 'utils/AuthService/AuthService';
 import TabletBreakPoint from 'utils/Responsive/TabletBreakPoint';
 import PhoneBreakpoint from 'utils/Responsive/PhoneBreakpoint';
 import ShadowWrapper from 'utils/ShadowWrapper/ShadowWrapper';
+
+import MembersData from 'utils/MembersAPI';
 
 class AppWrapperView extends Component {
   constructor(props) {
@@ -38,6 +41,9 @@ class AppWrapperView extends Component {
   }
 
   componentWillMount() {
+    MembersData.init();
+    this.members = window.localStorage.getItem('members');
+
     this.authService = new AuthService();
 
     // Add callback for lock's `authenticated` event
@@ -72,7 +78,8 @@ class AppWrapperView extends Component {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/calendar" component={CalendarPage} />
-        <Route path="/members" component={MembersPage} />
+        <Route exact path="/members" render={props => <MembersPage members={this.members} />} />
+        <Route exact path="/members/:id" render={props => <MemberPage {...props} />} />
         <Route path="/profile" component={ProfilePage} />
         <Route component={PageNotFound} />
       </Switch>

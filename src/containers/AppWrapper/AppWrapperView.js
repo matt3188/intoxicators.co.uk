@@ -62,6 +62,7 @@ class AppWrapperView extends Component {
 
   toggleMenu() {
     this.props.toggleMenu();
+    document.body.classList.toggle('fixed');
   }
 
   closeMenu() {
@@ -73,7 +74,7 @@ class AppWrapperView extends Component {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/calendar" component={CalendarPage} />
-        <Route exact path="/members" render={props => <MembersPage members={this.members} />} />
+        <Route exact path="/members" render={() => <MembersPage members={this.members} />} />
         <Route exact path="/members/:id" render={props => <MemberPage {...props} />} />
         <Route path="/profile" component={ProfilePage} />
         <Route component={PageNotFound} />

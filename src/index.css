@@ -5,15 +5,20 @@ body,
 #root {
   min-height: 100%;
 }
+.fixed html,
+.fixed body,
+.fixed #root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   color: #fff;
   background-color: #201b0e;
-}
-#root {
-  overflow-x: hidden;
 }
 .app {
   min-height: 100%;

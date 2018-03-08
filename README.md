@@ -1,4 +1,4 @@
-# intoxicators.co.uk
+# intoxicators.co.uk [![Build Status](https://travis-ci.org/matt3188/intoxicators.co.uk.svg?branch=master)](https://travis-ci.org/matt3188/intoxicators.co.uk)
 
 Website built in react for the Intoxicators. A group of Car enthusiasts with a passion for pre 1960's hot Rods.
 

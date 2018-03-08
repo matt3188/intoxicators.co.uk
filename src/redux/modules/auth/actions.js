@@ -1,15 +1,16 @@
+// @flow
 import * as types from './types';
 
 export const loginRequest = () => ({
   type: types.LOGIN_REQUEST,
 });
 
-export const loginSuccess = profile => ({
+export const loginSuccess = (profile: Object) => ({
   type: types.LOGIN_SUCCESS,
   payload: { profile },
 });
 
-export const loginError = error => ({
+export const loginError = (error: Object) => ({
   type: types.LOGIN_ERROR,
   error,
 });

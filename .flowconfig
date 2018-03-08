@@ -1,0 +1,8 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/auth0-lock/*
+
+[include]
+
+[libs]
+
+[options]

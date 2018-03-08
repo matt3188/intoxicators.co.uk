@@ -1,14 +1,15 @@
+// @flow
 import * as types from './types';
 import * as AuthService from 'utils/AuthService/AuthService';
 
 const authReducer = (
-  state = {
-    isAuthenticated: !AuthService.isTokenExpired(),
+  state: Object = {
+    isAuthenticated: (String = !AuthService.isTokenExpired()),
     isFetching: false,
-    profile: AuthService.getProfile(),
+    profile: (String = AuthService.getProfile()),
     error: null,
   },
-  action
+  action: Object
 ) => {
   switch (action.type) {
     case types.LOGIN_REQUEST:

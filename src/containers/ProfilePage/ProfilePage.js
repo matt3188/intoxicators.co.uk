@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
-import AuthService from 'utils/AuthService/AuthService';
+import * as AuthService from 'utils/AuthService/AuthService';
 
 import './ProfilePage.css';
 

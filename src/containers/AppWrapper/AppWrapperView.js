@@ -18,12 +18,10 @@ import Footer from 'components/Footer/Footer';
 import PageNotFound from 'components/PageNotFound/PageNotFound';
 
 // Utils
-import AuthService from 'utils/AuthService/AuthService';
+import * as AuthService from 'utils/AuthService/AuthService';
 import TabletBreakPoint from 'utils/Responsive/TabletBreakPoint';
 import PhoneBreakpoint from 'utils/Responsive/PhoneBreakpoint';
 import ShadowWrapper from 'utils/ShadowWrapper/ShadowWrapper';
-
-import MembersData from 'utils/MembersAPI';
 
 class AppWrapperView extends Component {
   constructor(props) {
@@ -41,27 +39,24 @@ class AppWrapperView extends Component {
   }
 
   componentWillMount() {
-    MembersData.init();
-    this.members = window.localStorage.getItem('members');
-
-    this.authService = new AuthService();
-
+    const { history, loginError, loginSuccess } = this.props;
     // Add callback for lock's `authenticated` event
-    this.authService.lock.on('authenticated', authResult => {
-      this.authService.lock.getProfile(authResult.accessToken, (error, profile) => {
+    AuthService.lock.on('authenticated', authResult => {
+      AuthService.lock.getUserInfo(authResult.accessToken, (error, profile) => {
         if (error) {
-          return this.props.loginError(error);
+          return loginError(error);
         }
         AuthService.setToken(authResult.idToken); // static method
         AuthService.setProfile(profile); // static method
-        this.props.loginSuccess(profile);
-        this.props.history.push({ pathname: '/' });
+        loginSuccess(profile);
+        history.push({ pathname: '/' });
+        AuthService.lock.hide();
       });
     });
     // Add callback for lock's `authorization_error` event
-    this.authService.lock.on('authorization_error', error => {
-      this.props.loginError(error);
-      this.props.history.push({ pathname: '/' });
+    AuthService.lock.on('authorization_error', error => {
+      loginError(error);
+      history.push({ pathname: '/' });
     });
   }
 
@@ -94,7 +89,7 @@ class AppWrapperView extends Component {
             <Navigation clickHandler={this.toggleMenu} />
             <div className={`app ${this.props.menuState ? 'menu-open' : ''}`}>
               <div className="header">
-                <Header authService={this.authService} />
+                <Header />
                 <FaBars className="nav-toggle" width="25" height="25" onClick={this.toggleMenu} />
               </div>
 
@@ -108,7 +103,7 @@ class AppWrapperView extends Component {
         <TabletBreakPoint>
           <div className={`app ${this.props.menuState ? 'menu-open' : ''}`}>
             <div className="header">
-              <Header authService={this.authService} />
+              <Header />
             </div>
             <Navigation />
 

@@ -17,6 +17,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# config
-auth0-variables.js

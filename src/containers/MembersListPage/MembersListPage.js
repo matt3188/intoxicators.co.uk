@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Container, Row, Col } from 'reactstrap';
 
-import './MembersPage.css';
+import './MembersListPage.css';
 
-const MembersPage = props => (
+const MembersListPage = props => (
   <Container>
     <Row className="show-grid">
       <Col xs={6} md={4}>
@@ -35,4 +35,4 @@ const MembersPage = props => (
   </Container>
 );
 
-export default MembersPage;
+export default MembersListPage;

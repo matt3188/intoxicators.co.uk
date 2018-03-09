@@ -7,7 +7,7 @@ import { FaBars } from 'react-icons/lib/fa/';
 // Containers
 import HomePage from 'containers/HomePage/HomePage';
 import CalendarPage from 'containers/CalendarPage/CalendarPage';
-import MembersPage from 'containers/MembersPage/MembersPage';
+import MembersListPage from 'containers/MembersListPage/MembersListPage';
 import MemberPage from 'containers/MemberPage/MemberPage';
 import ProfilePage from 'containers/ProfilePage/ProfilePage';
 
@@ -74,7 +74,7 @@ class AppWrapperView extends Component {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/calendar" component={CalendarPage} />
-        <Route exact path="/members" render={() => <MembersPage members={this.members} />} />
+        <Route exact path="/members" render={() => <MembersListPage members={this.members} />} />
         <Route exact path="/members/:id" render={props => <MemberPage {...props} />} />
         <Route path="/profile" component={ProfilePage} />
         <Route component={PageNotFound} />

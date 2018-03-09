@@ -5,7 +5,7 @@ import HeaderView from './HeaderView';
 
 describe('(Component) <Header />', () => {
   it('should render the correct title', () => {
-    const wrapper = shallow(
+    const component = shallow(
       <HeaderView
         authService={{}}
         history={{ push: () => null }}
